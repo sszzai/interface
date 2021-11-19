@@ -8,16 +8,9 @@
 
 namespace Sszzai\MicroService;
 
-class PushServiceInterface
+interface PushServiceInterface
 {
 
-
-    /**
-     * 推送聊天消息
-     * @param $msg
-     */
-    public function pushChatMsg($msg){
-
-    }
+    public function pushChatMsg($msg);
 
 }
