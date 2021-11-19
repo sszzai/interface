@@ -1,0 +1,18 @@
+{
+    "name": "interfacesszzai/interface",
+    "description": "xiao ma micro-service interface",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Sszzai\\MicroService\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Havo",
+            "email": "358223207@qq.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
