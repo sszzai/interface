@@ -33,5 +33,11 @@ interface CacheServiceInterface
     public function deleteAppCache(string $appkey);
 
 
+    /**
+     * 根据用户ID获取用户token信息
+     * @param $user_id 用户ID
+     * @return mixed
+     */
+    public function getUserTokenCache($user_id);
 
 }
