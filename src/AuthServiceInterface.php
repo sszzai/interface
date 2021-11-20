@@ -28,10 +28,11 @@ interface AuthServiceInterface
     /**
      * 用户登陆检测，检测用户当前状态
      * @param $token 登陆后的token
+     * @param $token 登陆后的token
      * @param $uid 用户ID
      * @return mixed
      */
-    public function checkLogin($token,$uid);
+    public function checkLogin(string $appkey,string $token,$uid);
 
 
 }
