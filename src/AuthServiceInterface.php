@@ -9,11 +9,29 @@ namespace Sszzai\MicroService;
 
 interface AuthServiceInterface
 {
-
+    /**
+     * 授权检测（检测客户端是否有权限进入）
+     * @param string $appkey 平台下发给客户端的应用key
+     * @return mixed
+     */
     public function access(string $appkey);
 
-    public function sign(string $sign,array $data);
+    /**
+     * 签名检测
+     * @param string $sign 客户端签名字符串
+     * @param array $data 待签名数据
+     * @param string $appkey 应用appkey
+     * @return mixed
+     */
+    public function sign(string $sign,array $data,string $appkey);
 
+    /**
+     * 用户登陆检测，检测用户当前状态
+     * @param $token 登陆后的token
+     * @param $uid 用户ID
+     * @return mixed
+     */
+    public function checkLogin($token,$uid);
 
 
 }

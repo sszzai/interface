@@ -11,8 +11,25 @@ namespace Sszzai\MicroService;
 interface CacheServiceInterface
 {
 
+    /**
+     * 获取应用缓存
+     * @param string $appkey 客户端key
+     * @return mixed
+     */
     public function getAppCache(string $appkey);
+    /**
+     * 设置应用缓存，不支持
+     * @param string $appkey 客户端key
+     * @param array $data 数据
+     * @return mixed
+     */
     public function setAppCache(string $appkey,array $data);
+
+    /**
+     * 删除缓存
+     * @param string $appkey 客户端key
+     * @return mixed
+     */
     public function deleteAppCache(string $appkey);
 
 
