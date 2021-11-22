@@ -13,7 +13,7 @@ interface PushServiceInterface
 
     /**
      * 推送离线聊天消息
-     * @param $msg
+     * @param array $msg
      * @return mixed
      */
     public function pushChatMsg($msg);
@@ -21,12 +21,13 @@ interface PushServiceInterface
 
     /**
      * 推送设备注册
-     * @param $type 推送平台类型
-     * @param $register_id 注册ID
+     * @param int $appid 应用ID
+     * @param string $type 推送平台类型
+     * @param string $register_id 注册ID
      * @param int $user_id 用户ID
      * @param array params 其他参数
      */
-    public function register($type,$register_id,$user_id=0,$params=[]);
+    public function register($appid,$type,$register_id,$user_id=0,$params=[]);
 
 
     /**
