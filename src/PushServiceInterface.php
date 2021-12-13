@@ -20,6 +20,13 @@ interface PushServiceInterface
 
 
     /**
+     * 告警
+     * @param $msg
+     * @return mixed
+     */
+    public function alert($msg);
+
+    /**
      * 推送设备注册
      * @param int $appid 应用ID
      * @param string $type 推送平台类型
@@ -32,9 +39,9 @@ interface PushServiceInterface
 
     /**
      * 设备与用户解绑
-     * @param $type 推送平台
-     * @param $register_id 注册ID
-     * @param $user_id 用户ID
+     * @param string $type 推送平台
+     * @param string $register_id 注册ID
+     * @param int $user_id 用户ID
      * @return mixed
      */
     public function unbind($type,$register_id,$user_id);
