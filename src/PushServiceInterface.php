@@ -22,13 +22,13 @@ interface PushServiceInterface
     /**
      * 报警
      * @param $event_type 事件标识 参考数据库 cmf_alert_event
-     * @param $title 标题
      * @param $content 内容
      * @param $level 等级 只支持：info=通知，warn=警告，error=一般错误，fatal=严重错误
      * @param $suggest 修复建议
      * @return mixed
      */
-    public function alert($event_type,$title,$content,$level='warn',$suggest='');
+    public function alert($event_type,$content,$level='warn',$suggest='');
+
 
     /**
      * 推送设备注册
