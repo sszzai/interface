@@ -4,7 +4,7 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Sszzai\\MicroService\\": "src/"
+            "Sszzai\\": "src/"
         }
     },
     "authors": [
