@@ -20,9 +20,7 @@ class Config
 
     public function __construct($config){
         foreach ($config as $key=>$vo){
-            if(isset($this->$key)){
-                $this->$key = $vo;
-            }
+            $this->$key = $vo;
         }
     }
 

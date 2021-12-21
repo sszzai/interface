@@ -9,12 +9,11 @@ namespace Sszzai\IFace;
 interface ILog
 {
 
-    public function info($application,$errorCode,$log);
-    public function debug($application,$errorCode,$log);
-    public function warn($application,$errorCode,$log);
-    public function error($application,$errorCode,$log);
-    public function fatal($application,$errorCode,$log);
-
-    public function trace($type,$step,$log);
+    public function info($app,$msg,$data=[]);
+    public function debug($app,$msg,$data=[]);
+    public function warn($app,$msg,$data=[]);
+    public function error($app,$msg,$data=[]);
+    public function fatal($app,$msg,$data=[]);
+    public function trace($type,$step,$msg,$data=[]);
 
 }
