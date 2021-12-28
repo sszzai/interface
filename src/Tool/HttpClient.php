@@ -91,7 +91,7 @@ class HttpClient {
             'data'=>$fields,
             'header'=>$headers,
             'content'=>$content
-        ]),FILE_APPEND);
+        ]).PHP_EOL,FILE_APPEND);
         if($errno){
             throw new SszzaiException($errMsg);
         }
