@@ -62,6 +62,13 @@ class HttpClient {
         }else{
             $query = $fields;
         }
+        if(!empty($headers)){
+            $tmp = [];
+            foreach ($headers as $key=>$vo){
+                $tmp[] = "{$key}:{$vo}";
+            }
+            $headers = $tmp;
+        }
 //        $headers = $headers + array('Expect:');
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
