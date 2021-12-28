@@ -7,6 +7,7 @@
 namespace Sszzai\Service;
 
 use Sszzai\Config\Config;
+use Sszzai\Constant\ApiConstant;
 use Sszzai\Exceptions\SszzaiException;
 use Sszzai\Tool\HttpClient;
 use Sszzai\Tool\Sign;
@@ -27,16 +28,54 @@ class Log
     }
 
 
-    public function record($title,$data,$level="info"){
+    /**
+     * 日志记录
+     * @param $title  日志标签
+     * @param $data 数据
+     * @param string $level 报警级别 info,debug,warn,error,fatal
+     * @param int $alert 1=发送报警
+     * @return string|null
+     * @throws SszzaiException
+     */
+    public function record($title,$data=[],$level="info",$alert=0){
         if(empty($title)){
             throw new SszzaiException("日志标题不能为空");
         }
         $param = [
             "type"=>$level,
             'title'=>$title,
+            'alert'=>$alert,
             'data'=> json_encode($data)
         ];
-        return HttpClient::post($this->config->getUrl(),$param,[
+        return HttpClient::post($this->config->getUrl(ApiConstant::LOG_RECORD_API),$param,[
+            'appkey' => $this->config->getAppkey(),
+            'sign' => Sign::getSign($param,$this->config->getSecret())
+        ]);
+    }
+
+
+    /**
+     * 流程日志
+     * @param $type 业务类型
+     * @param $step 当前步骤
+     * @param $title 消息
+     * @param array $data 数据
+     * @param int $alert 1=是否报警
+     * @return string|null
+     * @throws SszzaiException
+     */
+    public function trace($type,$step,$title,$data=[],$alert=0){
+        if(empty($type) || empty($step) || empty($title)){
+            throw new SszzaiException("日志标题不能为空");
+        }
+        $param = [
+            "type"=>$type,
+            'step'=>$step,
+            'title'=>$title,
+            'alert'=>$alert,
+            'data'=> json_encode($data)
+        ];
+        return HttpClient::post($this->config->getUrl(ApiConstant::LOG_TRACE_API),$param,[
             'appkey' => $this->config->getAppkey(),
             'sign' => Sign::getSign($param,$this->config->getSecret())
         ]);

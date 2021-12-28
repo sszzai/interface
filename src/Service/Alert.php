@@ -7,6 +7,7 @@
 namespace Sszzai\Service;
 
 use Sszzai\Config\Config;
+use Sszzai\Constant\ApiConstant;
 use Sszzai\Exceptions\SszzaiException;
 use Sszzai\Tool\HttpClient;
 use Sszzai\Tool\Sign;
@@ -46,7 +47,7 @@ class Alert
             'level'=>$level,
             'suggest'=>$suggest
         ];
-        return HttpClient::post($this->config->getUrl(),$data,[
+        return HttpClient::post($this->config->getUrl(ApiConstant::ALERT_API),$data,[
             'appkey' => $this->config->getAppkey(),
             'sign' => Sign::getSign($data,$this->config->getSecret())
         ]);

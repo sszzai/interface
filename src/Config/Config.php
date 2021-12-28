@@ -12,8 +12,9 @@ class Config
     private $log;
     private $url ;
 
-    public function getUrl(){
-        return $this->url;
+    public function getUrl($api,$ver=""){
+        $ver = !empty($ver)?$ver:ApiConstant::API_VERSION;
+        return rtrim($this->url,"/")."/{$ver}".$api;
     }
 
 
