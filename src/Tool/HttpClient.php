@@ -85,6 +85,13 @@ class HttpClient {
             $errMsg = curl_error($ch) . '[' .$errno . ']';
         }
         curl_close($ch);
+        file_put_contents("./http.log",json_encode([
+            "time"=>$time,
+            "url"=>$url,
+            'data'=>$fields,
+            'header'=>$headers,
+            'content'=>$content
+        ]),FILE_APPEND);
         if($errno){
             throw new SszzaiException($errMsg);
         }
