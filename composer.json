@@ -5,7 +5,10 @@
     "autoload": {
         "psr-4": {
             "Sszzai\\": "src/"
-        }
+        },
+        "files": [
+            "src/function.php"
+        ]
     },
     "authors": [
         {

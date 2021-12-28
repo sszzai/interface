@@ -5,6 +5,8 @@
  * @copyright 小码科技
  */
 namespace Sszzai\Config;
+use Sszzai\Constant\ApiConstant;
+
 class Config
 {
     private $appkey;

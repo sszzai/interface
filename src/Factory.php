@@ -5,6 +5,15 @@
  */
 namespace Sszzai;
 
+use App\Log\Log;
+use Sszzai\Service\Alert;
+
+/**
+ * Class Factory.
+ *
+ * @method Alert
+ * @method Log
+ */
 class Factory
 {
 

@@ -21,7 +21,10 @@ class Log
         if(empty($config)){
             throw new SszzaiException("配置文件不能为空");
         }
-        if(empty($config['appkey']) || empty($config['secret']) || empty($config['url'])){
+        if(empty($config['url'])){
+            throw new SszzaiException("api地址不能为空");
+        }
+        if(empty($config['appkey']) || empty($config['secret']) ){
             throw new SszzaiException("appkey和secret不能为空");
         }
         $this->config = new Config($config);
