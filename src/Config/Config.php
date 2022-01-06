@@ -9,22 +9,19 @@ use Sszzai\Constant\ApiConstant;
 
 class Config
 {
-    private $appkey;
-    private $secret;
-    private $log;
-    private $url ;
+    private $config;
 
     public function getUrl($api,$ver=""){
         $ver = !empty($ver)?$ver:ApiConstant::API_VERSION;
-        return rtrim($this->url,"/")."/{$ver}".$api;
+        $url = rtrim($this->config['url'],"/");
+        $api = "/{$ver}".$api;
+        return [$url,$api];
     }
 
 
 
     public function __construct($config){
-        foreach ($config as $key=>$vo){
-            $this->$key = $vo;
-        }
+        $this->config = $config;
     }
 
     /**
@@ -32,48 +29,30 @@ class Config
      */
     public function getAppkey()
     {
-        return $this->appkey;
+        return isset($this->config['appkey'])?$this->config['appkey']:"";
     }
 
-    /**
-     * @param mixed $appkey
-     */
-    public function setAppkey($appkey): void
-    {
-        $this->appkey = $appkey;
-    }
+
+
 
     /**
      * @return mixed
      */
     public function getSecret()
     {
-        return $this->secret;
+        return isset($this->config['secret'])?$this->config['secret']:"";
     }
 
-    /**
-     * @param mixed $secret
-     */
-    public function setSecret($secret): void
-    {
-        $this->secret = $secret;
-    }
+
 
     /**
      * @return mixed
      */
     public function getLog()
     {
-        return $this->log;
+        return isset($this->config['log'])?$this->config['log']:"";
     }
 
-    /**
-     * @param mixed $log
-     */
-    public function setLog($log): void
-    {
-        $this->log = $log;
-    }
 
 
 

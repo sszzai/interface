@@ -11,6 +11,7 @@ use Sszzai\Constant\ApiConstant;
 use Sszzai\Exceptions\SszzaiException;
 use Sszzai\Tool\HttpClient;
 use Sszzai\Tool\Sign;
+use Sszzai\Tool\SwooleClient;
 
 class Log
 {
@@ -50,7 +51,8 @@ class Log
             'alert'=>$alert,
             'data'=> json_encode($data)
         ];
-        return HttpClient::post($this->config->getUrl(ApiConstant::LOG_RECORD_API),$param,[
+        list($url,$api) = $this->config->getUrl(ApiConstant::LOG_RECORD_API);
+        SwooleClient::post($url,$api,$param,[
             'appkey' => $this->config->getAppkey(),
             'sign' => Sign::getSign($param,$this->config->getSecret())
         ]);
@@ -78,7 +80,8 @@ class Log
             'alert'=>$alert,
             'data'=> json_encode($data)
         ];
-        return HttpClient::post($this->config->getUrl(ApiConstant::LOG_TRACE_API),$param,[
+        list($url,$api) = $this->config->getUrl(ApiConstant::LOG_TRACE_API);
+        SwooleClient::post($url,$api,$param,[
             'appkey' => $this->config->getAppkey(),
             'sign' => Sign::getSign($param,$this->config->getSecret())
         ]);

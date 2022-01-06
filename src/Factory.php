@@ -23,23 +23,13 @@ class Factory
      * @param string $name
      * @param array  $config
      */
-    public static function make($name, array $config)
+    public static function make($name, array $config=[])
     {
-        if(!isset(self::$instances[$name])){
-            $name = ucfirst($name);
-            $application = "\\Sszzai\\Service\\{$name}";
-            self::$instances[$name] =  new $application($config);
+        $key = md5($name);
+        if(!isset(self::$instances[$key])){
+            self::$instances[$key] = new $name($config);
         }
-        return self::$instances[$name];
+        return self::$instances[$key];
     }
 
-    /**
-     * @param string $name
-     * @param array  $arguments
-     * @return mixed
-     */
-    public static function __callStatic($name, $arguments)
-    {
-        return self::make($name, ...$arguments);
-    }
 }

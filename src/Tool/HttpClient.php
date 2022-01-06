@@ -98,7 +98,7 @@ class HttpClient {
             'data'=>$fields,
             'header'=>$headers,
             'content'=>$content
-        ]).PHP_EOL,FILE_APPEND);
+        ],JSON_UNESCAPED_UNICODE).PHP_EOL,FILE_APPEND);
         if($errno){
             throw new SszzaiException($errMsg);
         }

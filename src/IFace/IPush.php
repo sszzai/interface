@@ -24,9 +24,10 @@ interface IPush
      * @param $content 内容
      * @param $level 等级 只支持：info=通知，warn=警告，error=一般错误，fatal=严重错误
      * @param $suggest 修复建议
+     * @Param $uniqid 序号
      * @return mixed
      */
-    public function alert($event_type,$content,$level='warn',$suggest='');
+    public function alert($event_type,$content,$level='warn',$suggest='',$uniqid="");
 
 
     /**
